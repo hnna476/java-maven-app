@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-	maven "Maven"
+    maven "Maven"
     }
     stages {
         stage('Build') {
@@ -12,6 +12,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'mvn test'
+                sh 'make check || true'
+                junit '**/target/*.xml'
             }
             post {
                 always {
