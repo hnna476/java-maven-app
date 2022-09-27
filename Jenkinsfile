@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'mvn test'
                 sh 'make check || true'
-                junit '**/target/*.xml'
+                junit 'target/surefire-reports/*.xml'
             }
             post {
                 always {
